@@ -15,6 +15,7 @@ stages {
         script {
        sh 'sudo yum -y install unzip java-1.8.0-openjdk'
        sh 'sudo yum -y install maven'
+          sh "mvn clean install"
          /* try{
           sh "mvn clean install"
            currentBuild.result = 'SUCCESS'
