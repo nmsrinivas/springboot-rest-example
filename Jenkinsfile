@@ -17,7 +17,6 @@ stages {
           try{
           sh "mvn clean install"
            currentBuild.result = 'SUCCESS'
-           archiveArtifacts artifacts: 'target/springbootdev.zip'
           } catch(Exception err){
           currentBuild.result = 'FAILURE'
          }
