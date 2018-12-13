@@ -25,7 +25,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/api")
-@Api(value = "Book", description = "Operations about Books")
+@Api(value = "Book", description = "Operations about Books swa")
 public class BooksResourceImpl implements BooksResource {
 
     @Autowired
