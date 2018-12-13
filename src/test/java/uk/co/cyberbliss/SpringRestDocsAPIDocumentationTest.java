@@ -1,4 +1,4 @@
-package uk.co.cyberbliss;
+/*package uk.co.cyberbliss;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -180,3 +180,4 @@ public class SpringRestDocsAPIDocumentationTest {
         return mapper.writeValueAsBytes(source);
     }
 }
+*/
