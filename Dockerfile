@@ -1,5 +1,5 @@
 FROM java:8
-MAINTAINER Stephen Judd "stephen.judd@opencredo.com"
+MAINTAINER Srinivas "nmsrinivas@gmail.com"
 
 EXPOSE 8095
 
