@@ -72,7 +72,7 @@
       </dependency>
 
       <!-- Required for Spring-restdocs -->
-      <dependency>
+     <!-- <dependency>
           <groupId>org.springframework.restdocs</groupId>
           <artifactId>spring-restdocs</artifactId>
           <version>1.0.0.M1</version>
@@ -83,7 +83,7 @@
     <groupId>org.springframework.restdocs</groupId>
     <artifactId>spring-restdocs-mockmvc</artifactId>
     <version>1.0.0.RELEASE</version>
-    </dependency>
+    </dependency> -->
 
   </dependencies>
     <build>
