@@ -14,7 +14,7 @@ stages {
         steps {
         script {
        /*sh 'sudo yum -y install unzip java-1.8.0-openjdk'*/
-       sh 'sudo apt install java-1.8.0-openjdk'
+       sh 'sudo apt install unzip java-1.8.0-openjdk'
        sh 'sudo yum -y install maven'
        sh 'mvn clean install'
        }
