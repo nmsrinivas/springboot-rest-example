@@ -18,13 +18,12 @@ stages {
        sh 'sudo apt install openjdk-8-jdk'
       
       /* sh 'sudo yum -y install maven'*/
-         sh 'sudo apt install maven'
+       sh 'sudo apt install maven'
        sh 'mvn clean install -DskipTests'
        }
       }
      }
      stage('Docker Build') {
-      agent any
       steps {
         sh 'docker build -t nmsrinivas/springbootapp .'
       }
