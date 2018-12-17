@@ -17,7 +17,7 @@ stages {
        sh 'sudo apt install openjdk-8-jdk'
        sh 'sudo apt update -y'
       /* sh 'sudo yum -y install maven'*/
-         sh 'sudo apt-get -y install maven'
+         sh 'sudo apt install maven'
        sh 'mvn clean install'
        }
       }
