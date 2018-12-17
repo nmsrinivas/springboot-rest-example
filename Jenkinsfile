@@ -19,7 +19,7 @@ stages {
       
       /* sh 'sudo yum -y install maven'*/
          sh 'sudo apt install maven'
-       sh 'mvn clean install'
+       sh 'mvn clean install -DskipTests'
        }
       }
      }
