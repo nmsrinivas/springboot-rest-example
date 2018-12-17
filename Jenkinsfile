@@ -25,7 +25,9 @@ stages {
      }
      stage('Docker Build') {
       steps {
-        sh 'docker build -t nmsrinivas/springbootapp .'
+       sh 'docker build -t nmsrinivas/springbootapp .'
+       sh 'docker login -U=$env.dockerlogin -P=$password' 
+       sh 'docker push nmsrinivas/springbootapp'
       }
     }
 }
