@@ -31,5 +31,12 @@ stages {
       /* sh 'sudo docker run -p  3000:9080 -d nmsrinivas/springbootapp' */
       }
     }
+    stage('Deploy') {
+            steps {
+                echo 'Deploying'
+                sh "kubectl create -f application.yaml"
+                sh "curl http://127.0.0.1:30036/api"
+            }
+     }
 }
 }
