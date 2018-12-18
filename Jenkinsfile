@@ -28,7 +28,7 @@ stages {
        sh 'sudo docker build -t nmsrinivas/springbootapp .'
        sh "sudo docker login -u=$env.dockerlogin -p=$env.password" 
        sh 'sudo docker push nmsrinivas/springbootapp'
-       sh 'sudo docker run -p  3000:9080 -d nmsrinivas/springbootapp'
+      /* sh 'sudo docker run -p  3000:9080 -d nmsrinivas/springbootapp' */
       }
     }
 }
