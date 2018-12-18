@@ -35,7 +35,7 @@ stages {
             steps {
                 echo 'Deploying'
                 sh "kubectl create -f application.yaml"
-                sh "curl http://127.0.0.1:30036/api"
+                sh "curl http://127.0.0.1:30002/api"
             }
      }
 }
