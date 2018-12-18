@@ -13,8 +13,8 @@ to make sure docker is running successfully).
 echo $USER (centos)
 sudo groupadd docker
 sudo usermod -aG docker $USER  ( after this command we need to duplicate session)
-docker run hello-world
 
+docker run hello-world
 sudo systemctl restart docker  (hello world)
 docker images  (to see docker images in local)
 
@@ -61,8 +61,21 @@ COPY . .
 CMD java -jar /usr/src/app/target/books-example-1.0-SNAPSHOT.jar
 
 -------------------------------------------------------------------------------------------------
+
+sudo yum -y install docker
+sudo systemctl start docker
+sudo systemctl status docker
+sudo systemctl enable docker
+sudo systemctl status docker
+
+echo $USER (centos)
+sudo groupadd docker
+sudo usermod -aG docker $USER  ( after this command we need to duplicate session)
+
 Dockerrised jenkins : https://medium.com/@manav503/how-to-build-docker-images-inside-a-jenkins-container-d59944102f30
 ==================================================================
+create the dir and go into dir and create Dockerfile:
+
 FROM jenkinsci/jenkins:lts
 USER root
 RUN apt-get update -qq \
@@ -98,8 +111,46 @@ Login Succeeded
 
 docker push  nmsrinivas/dockerjenkins
 
+------------------------------------
 
+docker pull nmsrinivas/dockerjenkins
 
+docker container run -d -p 8081:8080 -v /var/run/docker.sock:/var/run/docker.sock nmsrinivas/dockerjenkins
 
+add env variable : manage jenkins -> configure system -> add env environment varaiable
 
-
+pipeline {
+ agent any
+stages {
+  stage('CodeCheckOut') {
+    steps {
+      script {
+       checkout scm
+       /*def mvnHome = tool 'maven-3'
+       def javaHome = tool 'JAVA_1.8'*/  
+       }
+      }
+     }      
+      stage('Build customer app code'){
+        steps {
+        script {
+       /*sh 'sudo yum -y install unzip java-1.8.0-openjdk'*/
+       sh 'sudo apt-get update -y'
+       sh 'sudo apt -y install openjdk-8-jdk'
+      
+      /* sh 'sudo yum -y install maven'*/
+       sh 'sudo apt -y install maven'
+       sh 'mvn clean install -DskipTests'
+       }
+      }
+     }
+     stage('Docker Build') {
+      steps {
+       sh 'sudo docker build -t nmsrinivas/springbootapp .'
+       sh "sudo docker login -u=$env.dockerlogin -p=$env.password" 
+       sh 'sudo docker push nmsrinivas/springbootapp'
+       sh 'sudo docker run -p  3000:9080 -d nmsrinivas/springbootapp'
+      }
+    }
+}
+}
